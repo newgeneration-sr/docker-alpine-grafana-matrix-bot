@@ -3,6 +3,7 @@
 for file in $( ls /var/www/api/* )
 do
     sed -i "s;{ROOM_ID};$ROOM_ID;g" $file
+    sed -i "s;{ACCESS_TOKEN};$ACCESS_TOKEN;g"  $file
     sed -i "s;{BOT_TOKEN};$BOT_TOKEN;g"  $file
     sed -i "s;{SYNAPSE_SERVER};$SYNAPSE_SERVER;g"  $file
 done
