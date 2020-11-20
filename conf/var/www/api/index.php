@@ -1,7 +1,7 @@
 <?php
 
 $access_token = "{ACCESS_TOKEN}";
-if($_POST['access_token'] == $access_token){
+if($_GET['access_token'] == $access_token){
 	$MESSAGE = "TEST !";
 	$URL = "https://{SYNAPSE_SERVER}/_matrix/client/r0/rooms/{ROOM_ID}:{SYNAPSE_SERVER}/send/m.room.message?access_token={BOT_TOKEN}";
 	
