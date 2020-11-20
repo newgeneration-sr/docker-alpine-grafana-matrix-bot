@@ -8,6 +8,6 @@ services:
       - BOT_TOKEN=TOKEN
       - ROOM_ID=%21ROOMID
       - SYNAPSE_SERVER=SERVER
-
+      - ACCESS_TOKEN=TOKEN
     ports:
       - 8088:80
