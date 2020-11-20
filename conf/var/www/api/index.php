@@ -1,9 +1,11 @@
 <?php
 
 $access_token = "{ACCESS_TOKEN}";
-if($_GET['access_token'] == $access_token){
-	$MESSAGE = "TEST !";
-	$URL = "https://{SYNAPSE_SERVER}/_matrix/client/r0/rooms/{ROOM_ID}:{SYNAPSE_SERVER}/send/m.room.message?access_token={BOT_TOKEN}";
+if(isset($_GET['access_token']) && $_GET['access_token'] == $access_token){
+
+	$MESSAGE = "TEST !"; #adapt to grafana (idk the grafana output about alert)
+    
+    $URL = "https://{SYNAPSE_SERVER}/_matrix/client/r0/rooms/{ROOM_ID}:{SYNAPSE_SERVER}/send/m.room.message?access_token={BOT_TOKEN}";
 	
 	$data = array(
 		'msgtype'=>'m.text',
