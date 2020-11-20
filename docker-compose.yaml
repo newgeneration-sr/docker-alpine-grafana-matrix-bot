@@ -1,0 +1,13 @@
+version: '3.1'
+
+services:
+
+  api-bot:
+    build: .
+    environment:
+      - BOT_TOKEN=TOKEN
+      - ROOM_ID=%21ROOMID
+      - SYNAPSE_SERVER=SERVER
+
+    ports:
+      - 8088:80

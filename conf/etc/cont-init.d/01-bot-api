@@ -1,0 +1,13 @@
+#!/usr/bin/with-contenv ash
+
+for file in $( ls /var/www/api/* )
+do
+    sed -i "s;{ROOM_ID};$ROOM_ID;g" $file
+    sed -i "s;{BOT_TOKEN};$BOT_TOKEN;g"  $file
+    sed -i "s;{SYNAPSE_SERVER};$SYNAPSE_SERVER;g"  $file
+done
+
+chown nginx:nginx /var/www/api -R
+
+echo 0 > /tmp/nginx
+echo 0 > /tmp/php-fpm
