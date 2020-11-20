@@ -28,13 +28,17 @@ Exemple
 
 $access_token = "{ACCESS_TOKEN}";
 if(isset($_GET['access_token']) && $_GET['access_token'] == $access_token){
-  $_POST = json_decode(file_get_contents('php://input'));
-  if(isset($_POST["title"])){
-    $MESSAGE = "⚠️ : " . $_POST["title"];
+  $jsonstring = file_get_contents('php://input');
+  $data = json_decode($jsonstring, true);
+  if(isset($data["title"])){
+    $MESSAGE = "⚠️ : " . $data["title"];
     $MESSAGE .= "\n";
-    $MESSAGE .= $_POST["evalMatches"]["value"];
+    foreach ($data["evalMatches"] as $value) {
+        $MESSAGE .= $value["metric"] . ' = '. $value["value"];
+        $MESSAGE .= "\n";
+    }
     $MESSAGE .= "\n";
-    $MESSAGE .= $_POST["message"];
+    $MESSAGE .= $data["message"];
     $URL = "https://{SYNAPSE_SERVER}/_matrix/client/r0/rooms/{ROOM_ID}:{SYNAPSE_SERVER}/send/m.room.message?access_token={BOT_TOKEN}";
     
     $data = array(
@@ -49,7 +53,7 @@ if(isset($_GET['access_token']) && $_GET['access_token'] == $access_token){
     curl_setopt($crl, CURLOPT_POST, true);
     curl_setopt($crl, CURLOPT_POSTFIELDS, $post_data);
     curl_setopt($crl, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));	
-    echo curl_exec($crl);
+    curl_exec($crl);
     curl_close($crl);
   }
 }else{
