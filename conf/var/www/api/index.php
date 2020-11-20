@@ -33,10 +33,12 @@ if(isset($_GET['access_token']) && $_GET['access_token'] == $access_token){
 	$MESSAGE .= "\n";
 	$MESSAGE .= $_POST["evalMatches"]["value"];
 	$MESSAGE .= "\n";
-	$MESSAGE = $_POST["message"];
+	$MESSAGE .= $_POST["message"];
 	    
   $URL = "https://{SYNAPSE_SERVER}/_matrix/client/r0/rooms/{ROOM_ID}:{SYNAPSE_SERVER}/send/m.room.message?access_token={BOT_TOKEN}";
 	
+echo $MESSAGE;
+
 	$data = array(
 		'msgtype'=>'m.text',
 		'body'=>$MESSAGE
