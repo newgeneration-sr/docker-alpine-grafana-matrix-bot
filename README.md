@@ -1,6 +1,6 @@
 ![docker build automated](https://img.shields.io/docker/cloud/automated/dotriver/grafana-matrix-bot)
 ![docker build status](https://img.shields.io/docker/cloud/build/dotriver/grafana-matrix-bot)
-![docker build status](https://img.shields.io/docker/cloud/pulls/dotriver/grafana-matrix-bot)
+![docker build status](https://img.shields.io/docker/pulls/dotriver/grafana-matrix-bot)
 
 # Simple Bot for Matrix on Alpine Linux + S6 Overlay
 
